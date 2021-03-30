@@ -13,3 +13,10 @@ export function bugRemoved(id) {
     payload: { id },
   };
 }
+
+export function bugResolved(id) {
+  return {
+    type: actions.BUG_RESOLVED,
+    payload: { id },
+  };
+}
