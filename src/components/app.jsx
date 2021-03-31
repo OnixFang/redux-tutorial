@@ -1,3 +1,35 @@
+import './app.scss';
+import { useSelector } from 'react-redux';
+import React from 'react';
+
+export default function App() {
+  const store = useSelector((state) => state);
+  console.log(store);
+
+  const bugList = store.map((bug) => {
+    const { id, description, resolved } = bug;
+
+    return (
+      <li key={id}>
+        <span>ID: {id}</span>
+        <span className="description">Description: {description}</span>
+        <span>Resolved: {resolved ? 'Yes' : 'No'}</span>
+        <div className="actions">
+          <button className="btn resolve">Resolve</button>
+          <button className="btn remove">X</button>
+        </div>
+      </li>
+    );
+  });
+
+  return (
+    <React.Fragment>
+      <h1 className="app-title">Bug Log</h1>
+      <ul className="bug-list">{bugList}</ul>
+    </React.Fragment>
+  );
+}
+
 // import store from './store';
 // import { bugAdded, bugRemoved, bugResolved } from './actions';
 
@@ -11,7 +43,3 @@
 // store.dispatch(bugAdded("Nunu's snowball does not dissapear after hitting champ."));
 // store.dispatch(bugRemoved(2));
 // store.dispatch(bugResolved(3));
-
-export default function App() {
-  return <h1>HELLO!</h1>;
-}
