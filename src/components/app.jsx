@@ -1,26 +1,13 @@
 import './app.scss';
 import { useSelector } from 'react-redux';
 import React from 'react';
+import Bug from './bug';
 
 export default function App() {
   const store = useSelector((state) => state);
   console.log(store);
 
-  const bugList = store.map((bug) => {
-    const { id, description, resolved } = bug;
-
-    return (
-      <li key={id}>
-        <span>ID: {id}</span>
-        <span className="description">Description: {description}</span>
-        <span>Resolved: {resolved ? 'Yes' : 'No'}</span>
-        <div className="actions">
-          <button className="btn resolve">Resolve</button>
-          <button className="btn remove">X</button>
-        </div>
-      </li>
-    );
-  });
+  const bugList = store.map((bug) => <Bug key={bug.id} bug={bug} />);
 
   return (
     <React.Fragment>
