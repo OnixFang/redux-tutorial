@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { bugAdded, bugRemoved, bugResolved } from '../state/actions';
+import { bugRemoved, bugResolved } from '../state/actions';
 import React from 'react';
 import Bug from './Bug';
 // Styles
 import './App.scss';
+import BugAdder from './BugAdder';
 
 export default function App() {
   const store = useSelector((state) => state);
@@ -11,12 +12,10 @@ export default function App() {
 
   const handleResolve = (id) => {
     dispatch(bugResolved(id));
-    console.log('Bug resolved!', id);
   };
 
   const handleRemove = (id) => {
     dispatch(bugRemoved(id));
-    console.log('Bug removed!', id);
   };
 
   const bugList = store.map((bug) => (
@@ -26,12 +25,7 @@ export default function App() {
   return (
     <React.Fragment>
       <h1 className="app-title">Bug Log</h1>
-      <div className="bug-adder">
-        <div className="input-group">
-          <input className="text-input" type="text" />
-          <button className="btn red">Add</button>
-        </div>
-      </div>
+      <BugAdder dispatch={dispatch} />
       {bugList.length ? <ul className="bug-list">{bugList}</ul> : <div className="bug-list">No bugs to report!</div>}
     </React.Fragment>
   );
