@@ -1,0 +1,69 @@
+@import "../styles/color.scss";
+
+.app-title {
+  font-size: 3em;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.bug-list {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  padding: 15px 15px;
+  border-radius: 10px;
+  background-color: darken($dark-gray, 5%);
+  box-sizing: border-box;
+  margin: auto;
+
+  li {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: lighten($dark-gray, 5%);
+
+    &:nth-child(odd) {
+      background-color: darken($dark-gray, 10%);
+    }
+
+    span {
+      display: inline-block;
+      padding: 0 10px;
+      flex-shrink: 0;
+
+      &.description {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      width: 110px;
+
+      .remove {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+.bug-adder {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+  border-radius: 10px;
+}
+
+// Media queries
+@media screen and (max-width: 900px) {
+  .bug-list {
+    width: 600px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .bug-list {
+    width: 100%;
+  }
+}

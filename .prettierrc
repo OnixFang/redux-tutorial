@@ -2,7 +2,7 @@
   "printWidth": 120,
   "overrides": [
     {
-      "files": "*.js",
+      "files": ["*.js", "*.jsx"],
       "excludeFiles": "./node_modules/*",
       "options": {
         "singleQuote": true
