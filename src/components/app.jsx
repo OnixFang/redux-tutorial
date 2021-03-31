@@ -1,17 +1,21 @@
-import './App.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { bugAdded, bugRemoved, bugResolved } from '../state/actions';
 import React from 'react';
 import Bug from './Bug';
+// Styles
+import './App.scss';
 
 export default function App() {
   const store = useSelector((state) => state);
-  console.log(store);
+  const dispatch = useDispatch();
 
   const handleResolve = (id) => {
+    dispatch(bugResolved(id));
     console.log('Bug resolved!', id);
   };
 
   const handleRemove = (id) => {
+    dispatch(bugRemoved(id));
     console.log('Bug removed!', id);
   };
 
@@ -22,21 +26,12 @@ export default function App() {
   return (
     <React.Fragment>
       <h1 className="app-title">Bug Log</h1>
-      <ul className="bug-list">{bugList}</ul>
+      {bugList.length ? <ul className="bug-list">{bugList}</ul> : <div className="bug-list">No bugs to report!</div>}
     </React.Fragment>
   );
 }
-
-// import store from './store';
-// import { bugAdded, bugRemoved, bugResolved } from './actions';
-
-// const unsubscribe = store.subscribe(() => {
-//   console.log('Store changed!', store.getState());
-// });
 
 // store.dispatch(bugAdded('Ivern turns invisible on wall.'));
 // store.dispatch(bugAdded('Viego gets 1000 stacks on double kill.'));
 // // unsubscribe();
 // store.dispatch(bugAdded("Nunu's snowball does not dissapear after hitting champ."));
-// store.dispatch(bugRemoved(2));
-// store.dispatch(bugResolved(3));
