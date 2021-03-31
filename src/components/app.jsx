@@ -26,6 +26,12 @@ export default function App() {
   return (
     <React.Fragment>
       <h1 className="app-title">Bug Log</h1>
+      <div className="bug-adder">
+        <div className="input-group">
+          <input className="text-input" type="text" />
+          <button className="btn red">Add</button>
+        </div>
+      </div>
       {bugList.length ? <ul className="bug-list">{bugList}</ul> : <div className="bug-list">No bugs to report!</div>}
     </React.Fragment>
   );

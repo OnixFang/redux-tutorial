@@ -14,7 +14,7 @@ export default function Bug(props) {
         ) : (
           ''
         )}
-        <button onClick={props.onRemove} className="btn remove">
+        <button onClick={props.onRemove} className="btn red remove">
           X
         </button>
       </div>
