@@ -1,6 +1,23 @@
 import * as actions from './actionTypes';
 
 let lastId = 0;
+const baseState = [
+  {
+    id: -1,
+    description: 'A base bug 1',
+    resolved: false,
+  },
+  {
+    id: -2,
+    description: 'A base bug 2',
+    resolved: false,
+  },
+  {
+    id: -3,
+    description: 'A base bug 3',
+    resolved: false,
+  },
+];
 
 export default function reducer(state = [], action) {
   switch (action.type) {
@@ -21,6 +38,8 @@ export default function reducer(state = [], action) {
       return state.map((bug) => (bug.id !== action.payload.id ? bug : { ...bug, resolved: true }));
 
     default:
+      // Test data
+      // return baseState;
       return state;
   }
 }
