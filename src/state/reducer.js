@@ -38,6 +38,8 @@ export default function reducer(state = [], action) {
       return state.map((bug) => (bug.id !== action.payload.id ? bug : { ...bug, resolved: true }));
 
     default:
-      return baseState;
+      // Test data
+      // return baseState;
+      return state;
   }
 }
